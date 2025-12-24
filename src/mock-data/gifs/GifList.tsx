@@ -1,5 +1,5 @@
 import React from "react";
-import type { Gif } from "../gifs.mock";
+import type { Gif } from "../interfaces/gifs.mock";
 
 interface Props {
   gifs: Gif[];
