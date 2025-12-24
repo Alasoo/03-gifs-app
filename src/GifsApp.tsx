@@ -3,8 +3,20 @@ import { CustomHeader } from "./mock-data/shared/components/CustomHeader";
 import { SearchBar } from "./mock-data/shared/components/SearchBar";
 import { PreviousSearches } from "./mock-data/gifs/PreviousSearches";
 import { GifList } from "./mock-data/gifs/GifList";
+import { useState } from "react";
 
 export const GifsApp = () => {
+
+  const [previousSearches, setPreviousSearches] = useState([''])
+
+  const handleSearch = (previous: string) => {
+    //setPreviousSearches([...previousSearches, search])
+  }
+
+  const handlePreviousSearch = (search: string) => {
+    setPreviousSearches([...previousSearches, search])
+  }
+
   return (
     <>
       <CustomHeader
@@ -12,10 +24,11 @@ export const GifsApp = () => {
         description="Descrubre y comparte el gif perfecto"
       />
 
-      <SearchBar placeholder="Buscar gifs" />
+      <SearchBar placeholder="Buscar gifs" onSearch={handleSearch} />
 
       <PreviousSearches
-        searches={["goku", "naruto", "bleach", "dragon ball", "one punch man"]}
+        searches={previousSearches}
+        onSearch={handlePreviousSearch}
       />
 
       <GifList gifs={mockGifs} />
